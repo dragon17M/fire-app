@@ -8,44 +8,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [16.x]
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          ref: v2  # Specify the version of actions/checkout
+          node-version: ${{ matrix.node-version }}
 
-      - name: Set Git Config
-        run: git config --global GIT_CONFIG_NOSYSTEM 1
-
-      - name: Get Date
-        id: get-date
+      - name: Install Dependencies
         run: |
-          echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
-        shell: bash
+          npm install
+          
+      - name: Build
+        run: |
+          # أضف هنا أوامر البناء الخاصة بك
 
-      - name: Cache Buildozer global directory
-        uses: actions/cache@v2
-        with:
-          path: .buildozer_global
-          key: buildozer-global-${{ hashFiles('buildozer.spec') }}
-
-      - uses: actions/cache@v2
-        with:
-          path: .buildozer
-          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('buildozer.spec') }}
-
-      - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
-        with:
-          command: buildozer android debug
-          buildozer_version: master
-
-      - name: Set Output
-        run: echo "myOutput=${{ steps.buildozer.outputs.filename }}" >> $GITHUB_ENV
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: package
-          path: ${{ steps.buildozer.outputs.filename }}
+      # يمكنك إضافة مزيد من المراحل حسب احتياجات مشروعك
