@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = firedetectApp
+title = firedetectapp
 
 # (str) Package name
 package.name = firedetectapk
