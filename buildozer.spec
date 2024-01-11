@@ -38,8 +38,8 @@ android.api = 29
 # (int) Minimum API required
 android.minapi = 21
 
-# (int) Android SDK version to use
-android.sdk = 20
+# (int) Android SDK version to use (Ignore the warning)
+android.sdk = 29
 
 # (int) Android NDK version to use
 android.ndk = 19b
@@ -47,8 +47,8 @@ android.ndk = 19b
 # (int) Android NDK API to use. This is the minimum API your code will need to run.
 android.ndk_api = 21
 
-# (bool) Indicate whether the application should be using the android backend
-android.arch = armeabi-v7a
+# (list) Android architectures to build for
+android.archs = armeabi-v7a
 
 # (str) Version of the application
 version = 0.1
