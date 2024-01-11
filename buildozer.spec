@@ -49,3 +49,6 @@ android.ndk_api = 21
 
 # (bool) Indicate whether the application should be using the android backend
 android.arch = armeabi-v7a
+
+# (str) Version of the application
+version = 0.1
