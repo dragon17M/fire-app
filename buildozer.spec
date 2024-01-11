@@ -12,14 +12,10 @@ package.domain = org.example
 # (str) Source code where the main.py lives
 source.include_exts = py,png,jpg,kv,atlas
 source.include_exts_exclude = README.md, buildozer.spec
+source.dir = .
 
 # (list) Application requirements
 requirements = python3,kivy,opencv-python,playsound,Pillow
-
-# (str) Custom source folders for requirements
-# Sets custom source for any requirements with recipes
-# requirements.source.kivy = ../../kivy
-# requirements.source.sdl2_faucet = ../../sdl2_faucet
 
 # (str) Supported orientations (for now, just list them here)
 orientation = portrait
